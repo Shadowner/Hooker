@@ -2,4 +2,7 @@
 	import '../app.postcss';
 </script>
 
-<slot />
+<!-- Center the slot -->
+<div class="flex flex-col items-center justify-center h-screen">
+	<slot />
+</div>

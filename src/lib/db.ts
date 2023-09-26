@@ -1,6 +1,10 @@
 import "reflect-metadata";
 import { DataSource } from 'typeorm';
 import { UserModel } from '../models/UserModel';
+import { AuditModel } from "../models/AuditModel";
+import { RoleModel } from "../models/RoleModel";
+import { WebhookHistoryModel } from "../models/WebhookHistoryModel";
+import { WebhookModel } from "../models/WebhookModel";
 
 class TypeOrm {
 
@@ -13,7 +17,7 @@ class TypeOrm {
             port: 27017,
             database: 'Hooker',
             synchronize: true,
-            entities: [UserModel],
+            entities: [UserModel, AuditModel, RoleModel, WebhookHistoryModel, WebhookModel],
             migrations: [],
             subscribers: [],
             logging: true,

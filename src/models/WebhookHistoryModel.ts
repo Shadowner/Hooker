@@ -20,4 +20,9 @@ export class WebhookHistoryModel extends BaseEntity {
     @Column({ type: "int" })
     public status!: WebhookHistoryStatus;
 
+    @Column({ type: 'boolean' })
+    public isChild!: boolean;
+
+    @ObjectIdColumn({ type: 'uuid' })
+    public parentWebhookHistoryId?: ObjectId;
 }
