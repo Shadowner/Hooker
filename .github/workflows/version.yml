@@ -1,0 +1,44 @@
+name: Version Increment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  version-release:
+    if: startsWith(github.event.head_commit.message, '[RELEASE]')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+
+      - run: git config --global user.name 'Lucas Oulieu'
+      - run: git config --global user.email 'lucas@oulieu.fr'
+      - run: npm version release -m "[RELEASE] %s"
+      - run: git push --force
+
+  version-minor:
+    if: startsWith(github.event.head_commit.message, '[MINOR]')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+      - run: git config --global user.name 'Lucas Oulieu'
+      - run: git config --global user.email 'lucas@oulieu.fr'
+      - run: npm version minor -m "[MINOR] %s"
+      - run: git push --force
+
+  version-patch:
+    if: (!startsWith(github.event.head_commit.message, '[RELEASE]') && !startsWith(github.event.head_commit.message, '[MINOR]'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+      - run: git config --global user.name 'Lucas Oulieu'
+      - run: git config --global user.email 'lucas@oulieu.fr'
+      - run: npm version patch -m "[PATCH] %s"
+      - run: git push --force
