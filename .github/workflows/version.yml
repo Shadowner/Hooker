@@ -7,7 +7,7 @@ on:
 
 jobs:
   version-release:
-    if: startsWith(github.event.head_commit.message, '[RELEASE]')
+    if: startsWith(github.event.head_commit.message, '[RELEASE]') && !startsWith(github.event.head_commit.message, '[RELEASE] Package version bumping to')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,11 +16,12 @@ jobs:
 
       - run: git config --global user.name 'Lucas Oulieu'
       - run: git config --global user.email 'lucas@oulieu.fr'
-      - run: npm version release -m "[RELEASE] %s"
+      - run: npm version release -m "[RELEASE] Package version bumping to %s"
       - run: git push --force
 
   version-minor:
-    if: startsWith(github.event.head_commit.message, '[MINOR]')
+    # Run if Minor but not in include Automatic Bumping
+    if: startsWith(github.event.head_commit.message, '[MINOR]') && !startsWith(github.event.head_commit.message, '[MINOR] Package version bumping to')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -28,11 +29,11 @@ jobs:
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
       - run: git config --global user.name 'Lucas Oulieu'
       - run: git config --global user.email 'lucas@oulieu.fr'
-      - run: npm version minor -m "[MINOR] %s"
+      - run: npm version minor -m "[MINOR] Package version bumping to %s "
       - run: git push --force
 
   version-patch:
-    if: (!startsWith(github.event.head_commit.message, '[RELEASE]') && !startsWith(github.event.head_commit.message, '[MINOR]'))
+    if: (!startsWith(github.event.head_commit.message, '[RELEASE]') && !startsWith(github.event.head_commit.message, '[MINOR]') && !startsWith(github.event.head_commit.message, '[PATCH] Package version bumping to'))
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -40,5 +41,5 @@ jobs:
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
       - run: git config --global user.name 'Lucas Oulieu'
       - run: git config --global user.email 'lucas@oulieu.fr'
-      - run: npm version patch -m "[PATCH] %s"
+      - run: npm version patch -m "[PATCH] Package version bumping to %s"
       - run: git push --force
