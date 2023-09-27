@@ -1,7 +1,7 @@
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
-import type { UserModel } from "./models/UserModel";
-import type { AuthorizationJwtToken } from "./types/AuthorizationJwtToken";
+import type { UserModel } from './models/UserModel';
+import type { AuthorizationJwtToken } from './types/AuthorizationJwtToken';
 
 declare global {
 	namespace App {
@@ -10,10 +10,10 @@ declare global {
 			user?: AuthorizationJwtToken;
 		}
 		interface PageData {
-			user?:UserModel
+			user?: UserModel;
 		}
 		// interface Platform {}
 	}
 }
 
-export { };
+export {};

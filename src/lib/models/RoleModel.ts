@@ -1,12 +1,11 @@
-import type { ObjectId } from "mongodb"
-import { BaseEntity, Column, Entity, ObjectIdColumn } from "typeorm"
+import type { ObjectId } from 'mongodb';
+import { BaseEntity, Column, Entity, ObjectIdColumn } from 'typeorm';
 
 @Entity()
 export class RoleModel extends BaseEntity {
+	@ObjectIdColumn({ type: 'uuid' })
+	id!: ObjectId;
 
-    @ObjectIdColumn({ type: 'uuid' })
-    id!: ObjectId
-
-    @Column({ type: 'varchar', unique: true, })
-    name!: number
+	@Column({ type: 'varchar', unique: true })
+	name!: number;
 }

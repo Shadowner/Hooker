@@ -2,9 +2,9 @@
 const config = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 
-	themes: ["corporate"],
+	themes: ['corporate'],
 
-	plugins: [require("@tailwindcss/typography"), require("daisyui")]
+	plugins: [require('@tailwindcss/typography'), require('daisyui')]
 };
 
 module.exports = config;

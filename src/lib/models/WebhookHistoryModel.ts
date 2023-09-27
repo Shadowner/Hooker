@@ -1,28 +1,26 @@
-import { BaseEntity, Column, Entity, ObjectId, ObjectIdColumn } from "typeorm";
-import { WebhookHistoryStatus } from "../enum/WebhookHistoryStatus";
-
+import { BaseEntity, Column, Entity, ObjectId, ObjectIdColumn } from 'typeorm';
+import { WebhookHistoryStatus } from '../enum/WebhookHistoryStatus';
 
 @Entity()
 export class WebhookHistoryModel extends BaseEntity {
+	@ObjectIdColumn({ type: 'uuid' })
+	public id!: ObjectId;
 
-    @ObjectIdColumn({ type: 'uuid' })
-    public id!: ObjectId;
+	@ObjectIdColumn({ type: 'uuid' })
+	public webhookId!: ObjectId;
 
-    @ObjectIdColumn({ type: 'uuid' })
-    public webhookId!: ObjectId;
+	@Column({ type: 'date' })
+	public start!: Date;
 
-    @Column({ type: 'date' })
-    public start!: Date;
+	@Column({ type: 'date' })
+	public end?: Date;
 
-    @Column({ type: 'date' })
-    public end?: Date;
+	@Column({ type: 'int' })
+	public status!: WebhookHistoryStatus;
 
-    @Column({ type: "int" })
-    public status!: WebhookHistoryStatus;
+	@Column({ type: 'boolean' })
+	public isChild!: boolean;
 
-    @Column({ type: 'boolean' })
-    public isChild!: boolean;
-
-    @ObjectIdColumn({ type: 'uuid' })
-    public parentWebhookHistoryId?: ObjectId;
+	@ObjectIdColumn({ type: 'uuid' })
+	public parentWebhookHistoryId?: ObjectId;
 }

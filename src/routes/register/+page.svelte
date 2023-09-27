@@ -45,59 +45,28 @@
 			<label class="label" for="name-input">
 				<span class="text-base label-text">Name</span>
 			</label>
-			<input
-				type="text"
-				bind:value={name}
-				placeholder="Name"
-				class="w-full input input-bordered"
-				required
-			/>
+			<input type="text" bind:value={name} placeholder="Name" class="w-full input input-bordered" required />
 		</div>
 		<div>
 			<label class="label" for="email-input">
 				<span class="text-base label-text">Email</span>
 			</label>
-			<input
-				bind:value={email}
-				type="email"
-				id="email-input"
-				placeholder="Enter Email"
-				class="w-full input input-bordered"
-				required
-			/>
+			<input bind:value={email} type="email" id="email-input" placeholder="Enter Email" class="w-full input input-bordered" required />
 		</div>
 		<div>
 			<label class="label" for="password-input">
 				<span class="text-base label-text">Password</span>
 			</label>
-			<input
-				bind:value={password}
-				type="password"
-				id="password-input"
-				placeholder="Enter Password"
-				class="w-full input input-bordered"
-				required
-			/>
+			<input bind:value={password} type="password" id="password-input" placeholder="Enter Password" class="w-full input input-bordered" required />
 		</div>
 		<div>
 			<label class="label" for="confirm-password-input">
 				<span class="text-base label-text">Confirm Password</span>
 			</label>
-			<input
-				bind:value={confirmPassword}
-				type="password"
-				id="confirm-password-input"
-				placeholder="Confirm Password"
-				class="w-full input input-bordered"
-				required
-			/>
+			<input bind:value={confirmPassword} type="password" id="confirm-password-input" placeholder="Confirm Password" class="w-full input input-bordered" required />
 		</div>
 		<div>
-			<button
-				class="btn btn-block"
-				disabled={!password || !email || !name || !confirmPassword}
-				on:click={register}>Sign Up</button
-			>
+			<button class="btn btn-block" disabled={!password || !email || !name || !confirmPassword} on:click={register}>Sign Up</button>
 		</div>
 		<span
 			>Tu as déjà un compte?

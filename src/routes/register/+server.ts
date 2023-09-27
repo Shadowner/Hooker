@@ -1,13 +1,12 @@
-import { error, json } from "@sveltejs/kit";
-import type { RequestEvent } from "./$types";
+import { error, json } from '@sveltejs/kit';
+import type { RequestEvent } from './$types';
 
-@VerifyDto()
 export async function POST(event: RequestEvent) {
-    const body = event.request.json().catch(() => null);
+	const body = event.request.json().catch(() => null);
 
-    if (!body) {
-        throw error(400, "No body provided");
-    }
+	if (!body) {
+		throw error(400, 'No body provided');
+	}
 
-    return json({ message: "Hello from the server!" });
+	return json({ message: 'Hello from the server!' });
 }
