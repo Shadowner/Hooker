@@ -2,13 +2,17 @@ name: Pre-merge checks 🤖
 run-name: Starting pre-merge checks for ${{ github.event.pull_request.head.ref }} by ${{ github.actor }}
 # One pull request to main branch
 on:
-  pull_request:
+  pull_request_target:
     branches:
       - main
 
 jobs:
   pre-merge-checks:
     runs-on: ubuntu-latest
+    env:
+      MONGODB_URI: 'mongodb://localhost:27017'
+      MONGODB_DATABASE: 'test'
+
     steps:
       - uses: actions/checkout@v2
 
@@ -29,11 +33,9 @@ jobs:
       - name: Build 🏗
         run: yarn build
 
+        # Will always use the latest version of mongodb
+      - name: Setup MongoDB 🍃
+        uses: supercharge/mongodb-github-action@1.10.0
+
       - name: Test 🧪
         run: yarn test
-
-      - name: Generate Artifacts 📦
-        uses: actions/upload-artifact@v3
-        with:
-          name: client-build-${{ github.event.pull_request.head.ref }}
-          path: .svelte-kit/output
