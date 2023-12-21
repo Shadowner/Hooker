@@ -7,6 +7,6 @@ export default defineConfig({
 		include: ['src/**/*.{test,spec}.{js,ts}']
 	},
 	ssr: {
-		external: ['reflect-metadata'],
-	},
+		external: ['reflect-metadata']
+	}
 });
