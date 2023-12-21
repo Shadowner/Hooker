@@ -47,6 +47,8 @@
 		"jsonwebtoken": "^9.0.2",
 		"mongodb": "^5.2.0",
 		"reflect-metadata": "^0.1.13",
-		"typeorm": "^0.3.17"
+		"tsoa": "^5.1.1",
+		"typeorm": "^0.3.17",
+		"valibot": "^0.18.0"
 	}
 }

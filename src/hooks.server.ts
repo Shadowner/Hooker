@@ -1,4 +1,5 @@
 import '$lib/db';
+import '$lib/controllers';
 import { homeGuard } from '$lib/guard/home-guard';
 import type { Handle } from '@sveltejs/kit';
 
